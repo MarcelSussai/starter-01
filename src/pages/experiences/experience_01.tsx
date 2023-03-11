@@ -87,15 +87,15 @@ const Neumorphism = styled(Base)`
   background:
     linear-gradient(
       -56deg,
-      ${ ({theme}) => theme.colors.gray.c100 },
-      ${ ({theme}) => theme.colors.gray.c250 }
+      ${ ({theme}) => theme.colors.gray.c100 }80,
+      ${ ({theme}) => theme.colors.gray.c250 }80
     )
   ;
   border-radius: 32px;
   border: solid 1px #FFFFFF16;
   box-shadow:
-    6px 6px 16px ${ ({theme}) => theme.colors.gray.c775 }32,
-    -6px -6px 16px #FFFFFFB0
+    16px 16px 32px ${ ({theme}) => theme.colors.gray.c775 }32,
+    -16px -16px 32px #FFFFFFB0
   ;
 `
 
@@ -123,6 +123,7 @@ export default function Experience_01() {
           <Minimalism> {`Minimalism`} </Minimalism>
           <Glassmorphism> {`Glassmorphism`} </Glassmorphism>
           <Claymorphism> {`Claymorphism`} </Claymorphism>
+          <Neumorphism> {`Neumorphism`} </Neumorphism>
           <ContainerForDiference>
             <Neumorphism> {`Neumorphism`} </Neumorphism>
           </ContainerForDiference>
