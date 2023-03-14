@@ -49,6 +49,7 @@ const ContainerLinksStarter = styled.section`
 const arrayLinks = [
   { title: 'color tools', href: '/tools/colors'},
   { title: 'experiences 01', href: '/experiences/experience_01'},
+  { title: 'experiences 02', href: '/experiences/experience_02'},
 ]
 
 export default function Home() {

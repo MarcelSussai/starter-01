@@ -36,7 +36,7 @@ const Base = styled.div`
   align-items: flex-start;
   background: ${ ({theme}) => theme.colors.gray.c075 };
   color: ${ ({theme}) => theme.colors.gray.c725 };
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 900;
   border-radius: 24px;
   cursor: pointer;

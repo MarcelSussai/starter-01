@@ -43,7 +43,7 @@ export default createGlobalStyle`
   }
   html {
     scroll-behavior: smooth;
-    font-size:  62.5%;
+    font-size: 62.5%;
     overflow-x: hidden;
     scrollbar-color: #323232 #646464;
   }
@@ -54,9 +54,10 @@ export default createGlobalStyle`
     min-height: 100vh;
     padding: 0;
     line-height: 1.4;
-    overflow-x: hidden;
+    overflow: hidden;
     font-size: 1.6rem;
     background: #FFF;
+    min-height: fit-content;
   }
   ul[class], ol[class] {
     list-style: none;

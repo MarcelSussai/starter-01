@@ -1,25 +1,23 @@
-import { useState } from 'react'
 import * as S from './styles'
+import * as I from './interfaces'
 
 
-interface ICheckboxDefault {
-  text?: string
-  hideText?: boolean
-}
+
 export default function CheckboxDefault({
-  text = 'Example of checkbox', hideText = false
-}: ICheckboxDefault) {
-
-  const [check, setCheck] = useState(false)
-  const handleCheck = () => setCheck(check => !check)
+  text = 'Example of checkbox',
+  hideText = false,
+  checked = false,
+  onChange,
+  color = 'default'
+}: I.ICheckboxDefault) {
 
   return (
-    <S.ContainerAllCheckbox>
+    <S.ContainerAllCheckbox color={color}>
       <S.CheckboxContainer>
-        <S.HiddenCheckbox checked={check} onChange={handleCheck} />
-        <S.StyledCheckbox checked={check}>{'✔'}</S.StyledCheckbox>
+        <S.HiddenCheckbox checked={checked} onChange={onChange} />
+        <S.StyledCheckbox checked={checked}>{'✔'}</S.StyledCheckbox>
       </S.CheckboxContainer>
-      { !hideText && <S.Text checked={check}>{text}</S.Text> }
+      { !hideText && <S.Text checked={checked}>{text}</S.Text> }
     </S.ContainerAllCheckbox>
   )
 }

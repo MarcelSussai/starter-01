@@ -22,6 +22,7 @@
     "paths": {
       "@/*": [
         "./src/*",
+        "./src/pages/*",
         "./src/theme/colorsScheme/*",
         "./src/theme/colorsScheme/viewColors/*",
         "./src/components/*",

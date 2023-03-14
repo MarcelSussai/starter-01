@@ -25,6 +25,7 @@ const theme_colors_default = {
   yellow:         makingTonesGiant('#F9F871'),
   gold:           makingTonesGiant('#FFDE82'),
   cream:          makingTonesGiant('#FFEDCB'),
+  default:        makingTonesGiant('#888888'),
 }
 
 const colors = {
