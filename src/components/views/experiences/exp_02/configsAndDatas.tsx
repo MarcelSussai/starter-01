@@ -1,6 +1,7 @@
 // import * as I from './interfaces'
 import { IColumnConfigItem } from '@/components/ui/dataViews/table/interfaces'
 import * as S from './styles'
+import { formatAsPercentage } from '@/utils/formatAsPercentage';
 
 export const columnsDados = [
   {
@@ -12,7 +13,6 @@ export const columnsDados = [
     name: 'Coluna 02',
     keyColumn: 'col_02',
     valueComponent: (value: any) => <S.DivCell>{value}</S.DivCell>,
-    hide: false
   },
   {
     name: 'Coluna 03',
@@ -51,7 +51,22 @@ export const columnsDados2 = [
   { name: 'Coluna 03', keyColumn: 'col_03'},
   { name: 'Coluna 04', keyColumn: 'col_04'},
 ]
-export const configSizeColumns = ' 120px 1fr 112px 200px '
+/*
+  regra pra estipular valores para o grid da tabela:
+  ter pelo menos um item com medida fracionária fr, exemplo:
+  numa tabela de 4 colunas sem contar a coluna de checkbox,
+  o valor da configuração dos tamanhos das colunas seria:
+  ' 64px 1fr 64px 1fr ' ou ' 64px 1fr 64px 64px '
+  mas NÃO pode ser: ' 64px 64px 64px 64px '
+  para valores que o conteúdo pode ser maior ou menor que o valor usar minmax() function css
+*/
+export const configDynamicSizeColumns = [
+  {min: '80px', max: '80px', idKey: 'id'},
+  {min: '200px', max: '1fr', idKey: 'description' },
+  {min: '96px', max: '96px', idKey: 'percentage'},
+  {min: '136px', max: '136px', idKey: 'date'},
+  {min: '200px', max: '.4fr', idKey: 'monetaryValue'},
+]
 export const columnsConfigRealData: IColumnConfigItem[] = [
   {
     name: 'ID',
@@ -62,6 +77,11 @@ export const columnsConfigRealData: IColumnConfigItem[] = [
     name: 'Descrição',
     keyColumn: 'description',
     valueComponent: (value) => <S.DivCell>{value}</S.DivCell>
+  },
+  {
+    name: '%',
+    keyColumn: 'percentage',
+    valueComponent: (value) => <S.DivCell3>{formatAsPercentage(Number(value))}</S.DivCell3>
   },
   {
     name: 'Data',

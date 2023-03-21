@@ -7,7 +7,7 @@ import {
   columnsConfigRealData,
   columnsDados,
   columnsDados2,
-  configSizeColumns,
+  configDynamicSizeColumns,
   dados,
   dados2
 } from './configsAndDatas'
@@ -19,24 +19,25 @@ import { useMock01 } from '@/queries/useMock01'
 export default function ViewExperience_02({}: I.IViewExperience_02) {
   
   const { data, error, isLoading, isSuccess } = useMock01()
-  useEffect(() => { console.log('QUERIE: ', data) }, [data])
-
   const [exampleCheck, setExampleCheck] = useState(false)
   const handleExampleCheck = () => setExampleCheck(!exampleCheck)
+
 
   return (
     <>
         <S.ContainerAll>
           <TableDefault data={dados} columnsConfig={columnsDados} />
-          <TableDefault data={dados2} columnsConfig={columnsDados2} color='gray' />
-            <TableDefault
-              isLoading={isLoading}
-              data={data?.results}
-              columnsConfig={columnsConfigRealData}
-              configSizeColumns={configSizeColumns} color='main'
-            />
-          <CheckboxDefault checked={exampleCheck} onChange={handleExampleCheck} color='strongRed' />
+          <TableDefault data={dados2} columnsConfig={columnsDados2} color='grey' alternateBg />
+          <TableDefault
+            isLoading={isLoading} alternateBg
+            data={data?.results}
+            columnsConfig={columnsConfigRealData}
+            color='greyAzure'
+            sizesOfColumns={configDynamicSizeColumns}
+          />
+          <CheckboxDefault checked={exampleCheck} onChange={handleExampleCheck} color='strongRed' fit />
         </S.ContainerAll>
+        <Loading />
     </>
   )
 }

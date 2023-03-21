@@ -8,11 +8,14 @@ export default function CheckboxDefault({
   hideText = false,
   checked = false,
   onChange,
-  color = 'default'
+  color = 'default',
+  fit = false,
+  horizontalAlignment = 'flex-start',
+  noBg = false,
 }: I.ICheckboxDefault) {
 
   return (
-    <S.ContainerAllCheckbox color={color}>
+    <S.ContainerAllCheckbox noBg={noBg} horizontalAlignment={horizontalAlignment} color={color} fit={fit}>
       <S.CheckboxContainer>
         <S.HiddenCheckbox checked={checked} onChange={onChange} />
         <S.StyledCheckbox checked={checked}>{'✔'}</S.StyledCheckbox>

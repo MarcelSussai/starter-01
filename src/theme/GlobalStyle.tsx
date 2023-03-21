@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { cssVarColorsMakers } from './colorsScheme/cssVarsColorsMaker'
 
 
 export default createGlobalStyle`
@@ -42,6 +43,11 @@ export default createGlobalStyle`
     background: #323232;
   }
   html {
+    /*
+    talvez isso gere algum problema ou não,
+    pois gera um css global muito grande mais de 200kb só de vars colors
+    */
+    ${cssVarColorsMakers()}
     scroll-behavior: smooth;
     font-size: 62.5%;
     overflow-x: hidden;
@@ -54,10 +60,9 @@ export default createGlobalStyle`
     min-height: 100vh;
     padding: 0;
     line-height: 1.4;
-    overflow: hidden;
     font-size: 1.6rem;
     background: #FFF;
-    min-height: fit-content;
+    /* min-height: fit-content; */
   }
   ul[class], ol[class] {
     list-style: none;

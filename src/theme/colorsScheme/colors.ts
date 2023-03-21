@@ -3,7 +3,8 @@ import { makingTonesGiant } from './makingTones'
 const theme_colors_default = {
   main:           makingTonesGiant('#3C90E5'),
   second:         makingTonesGiant('#3ce579'),
-  gray:           makingTonesGiant('#A3ABBD'),
+  greyAzure:      makingTonesGiant('#a5b9cd'),
+  grey:           makingTonesGiant('#A3ABBD'),
   limeGreen:      makingTonesGiant('#a8e53c'),
   green:          makingTonesGiant('#2AA071'),
   leaf:           makingTonesGiant('#00755D'),

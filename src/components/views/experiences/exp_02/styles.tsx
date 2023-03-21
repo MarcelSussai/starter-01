@@ -18,6 +18,8 @@ export const DivCell = styled.div`
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
+  z-index: 1;
+  cursor: text;
 `
 
 export const DivCell2 = styled.div`
@@ -58,6 +60,7 @@ export const DivCell3 = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
   font-family: ${inconsolata.style.fontFamily};
   font-weight: 500;
   font-size: 1.64rem;

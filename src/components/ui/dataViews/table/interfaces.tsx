@@ -1,11 +1,24 @@
-import { ReactNode } from "react"
-
 export interface ITableDefault {
   data: any[] | undefined
   columnsConfig: IColumnConfigItem[]
   configSizeColumns?: string
   color?: string
   isLoading?: boolean
+  titleText?: string
+  alternateBg?: boolean
+  isSelectable?: boolean
+  onChangeSelects?: (value: string[]) => void
+  exbandable?: boolean
+  expandableComponent?: (value: string | number ) => JSX.Element
+  onDeleteClick?: (value: string[]) => void
+  hiddenColumnsByDefault?: string[]
+  sizesOfColumns?: ISize[]
+}
+
+export interface IuseTable {
+  hiddenColumns: string[]
+  sizesOfColumns: ISize[]
+  columnsConfig: IColumnConfigItem[]
 }
 
 export interface IContainerAll {
@@ -24,25 +37,36 @@ export interface IColumnConfigItem {
   keyColumn: string
   valueComponent?: (value: string | number) => JSX.Element
   headerColumnComponent?: (value: string | number) => JSX.Element
-  hide?: boolean
-  size?: string
+  sizes?: ISize
+  hiddenByDefault?: boolean
 }
 
-export interface ITableRow {
-  columns: IColumnConfigItem[]
+
+  columns: (IColumnConfigItem | undefined)[]
   row: any
   selectAll?: boolean
   arraySelect?: string[]
   setArraySelect?: (value: string[]) => void
   color?: string
+  alternate?: boolean
+  isLast?: boolean
 }
 
 export interface ICell {
   size?: string
   isFirst?: boolean
   isLast?: boolean
+  alternate?: boolean
+  noBorder?: boolean
 }
 
-export interface ICellSelectHEader {
-  qtd: number
+export interface ICellSelectHeader {
+  qtd?: number
+  noBorder?: boolean
+}
+
+export interface ISize {
+  min: string,
+  max: string
+  idKey: string,
 }

@@ -4,12 +4,10 @@ import { mock_01 } from '@/utils/mockResponses'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Mock01Data>
 ) {
-  setTimeout(() => {
-    res.status(200).json(mock_01)
-  }, 4000)
+  try { setTimeout(() => { res.status(200).json(mock_01) }, 2000) }
+  catch (err: any) { res.status(500).json(err) }
 }

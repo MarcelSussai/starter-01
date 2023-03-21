@@ -11,8 +11,8 @@ const Header = styled.header`
   align-items: center;
   width: 100%;
   padding: 16px;
-  background: ${ ({theme}) => theme.colors.gray.c975 };
-  color: ${ ({theme}) => theme.colors.gray.c025 };
+  background: ${ ({theme}) => theme.colors.default.c975 };
+  color: ${ ({theme}) => theme.colors.default.c025 };
 `
 const MainTitle = styled.h1`
   font-size: 4.8rem;
@@ -28,14 +28,14 @@ const SecondTitle = styled.h2`
 `
 const StyledLink = styled(Link)`
   padding: 8px 16px;
-  background: ${ ({theme}) => theme.colors.gray.c025 };
-  color: ${ ({theme}) => theme.colors.gray.c800 };
+  background: ${ ({theme}) => theme.colors.default.c025 };
+  color: ${ ({theme}) => theme.colors.default.c800 };
   font-weight: 800;
   transition: all .2s ease-in-out;
-  border: solid 1px ${ ({theme}) => theme.colors.gray.c100 };
+  border: solid 1px ${ ({theme}) => theme.colors.default.c100 };
   border-radius: 32px;
 
-  &:hover { background: ${({theme}) => theme.colors.gray.c125}; }
+  &:hover { background: ${({theme}) => theme.colors.default.c125}; }
 `
 const ContainerLinksStarter = styled.section`
   display: flex;
@@ -43,7 +43,7 @@ const ContainerLinksStarter = styled.section`
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px;
-  background: ${ ({theme}) => theme.colors.gray.c050 };
+  background: ${ ({theme}) => theme.colors.default.c050 };
   justify-content: flex-start;
 `
 const arrayLinks = [

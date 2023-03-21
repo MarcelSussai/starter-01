@@ -26,6 +26,7 @@
         "./src/theme/colorsScheme/*",
         "./src/theme/colorsScheme/viewColors/*",
         "./src/components/*",
+        "./src/utils/*",
         "./src/theme/*"
       ]
     }

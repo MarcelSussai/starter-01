@@ -17,6 +17,8 @@ export default function Loading({
           <div className="circle-05" />
         </S.ContainerLoading>
       </S.ContainerAllLoading>
+      {`Carregando ...`}
     </S.ContainerAll>
   )
 }
+

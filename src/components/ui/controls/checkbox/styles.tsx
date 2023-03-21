@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import * as I from './interfaces'
 
 export const ContainerAllCheckbox = styled.label<I.IContainerAllCheckbox>`
-  --color-025:    ${({theme, color}: any) => theme.colors[color].c025};
+  --color-025:    ${({theme, color}: any) => theme.colors[color].c025}A0;
   --color-050:    ${({theme, color}: any) => theme.colors[color].c050};
-  --color-075:    ${({theme, color}: any) => theme.colors[color].c075};
+  --color-075:    ${({theme, color}: any) => theme.colors[color].c075}A0;
+  --color-100:    ${({theme, color}: any) => theme.colors[color].c100}AA;
   --color-150:    ${({theme, color}: any) => theme.colors[color].c150};
   --color-275:    ${({theme, color}: any) => theme.colors[color].c275};
   --color-400:    ${({theme, color}: any) => theme.colors[color].c400};
@@ -15,14 +16,17 @@ export const ContainerAllCheckbox = styled.label<I.IContainerAllCheckbox>`
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: ${ ({horizontalAlignment}) => horizontalAlignment };
   gap: 6px;
   user-select: none;
   cursor: pointer;
   padding: 6px;
-  background: var(--color-025);
-  width: fit-content;
-  height: 100%;
-  &:hover { background: var(--color-075); }
+  background: ${ ({noBg}) => noBg ? 'transparent' : 'var(--color-025)' };
+  width: 100%;
+  width: ${ ({fit}) => fit ? 'fit-content' : '100%' };
+  height: ${ ({fit}) => fit ? 'fit-content' : '100%' };
+  border-radius: ${ ({fit}) => fit ? '2px' : 'none' };
+  &:hover { background: var(--color-150); }
 `
 
 export const CheckboxContainer = styled.div`
@@ -53,7 +57,7 @@ export const StyledCheckbox = styled.div<I.IStyledCheckbox>`
   width: var(--size);
   height: var(--size);
   border-radius: 2px;
-  background: ${ ({checked}) => checked ? 'var(--color-825)' : 'var(--color-050)' };
+  background: ${ ({checked}) => checked ? 'var(--color-825)' : 'var(--color-025)' };
   color: ${ ({checked}) => !checked ? 'var(--color-150)' : 'var(--color-050)' };
   font-size: 12px;
   font-weight: 900;
