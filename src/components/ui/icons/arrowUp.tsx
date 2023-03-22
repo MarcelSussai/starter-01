@@ -3,14 +3,13 @@ import * as I from './interfaces'
 
 
 
-export default function ArrowUp({color = 'default', show = false, mode = 'down'}: I.IIcon) {
-  let moded = show ? mode : 'up'
+export default function ArrowUp({color = 'default', show = false, mode = 'up'}: I.IIcon) {
   return (
     <S.Svg
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       color={color}
-      mode={moded}
+      mode={mode}
       show={show}
     >
       <path

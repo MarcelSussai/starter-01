@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { cssVarColorsMakers } from './colorsScheme/cssVarsColorsMaker'
+import { montserrat } from './fonts'
 
 
 export default createGlobalStyle`
@@ -43,15 +44,11 @@ export default createGlobalStyle`
     background: #323232;
   }
   html {
-    /*
-    talvez isso gere algum problema ou não,
-    pois gera um css global muito grande mais de 200kb só de vars colors
-    */
-    ${cssVarColorsMakers()}
     scroll-behavior: smooth;
     font-size: 62.5%;
     overflow-x: hidden;
     scrollbar-color: #323232 #646464;
+    font-family: ${montserrat.style.fontFamily};
   }
   a {
     text-decoration: none;
@@ -62,7 +59,6 @@ export default createGlobalStyle`
     line-height: 1.4;
     font-size: 1.6rem;
     background: #FFF;
-    /* min-height: fit-content; */
   }
   ul[class], ol[class] {
     list-style: none;

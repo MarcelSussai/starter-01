@@ -4,15 +4,14 @@ import * as I from './interfaces'
 
 
 export default function ColumnsIcon({
-  color = 'default', show = false, mode = 'down', width, height
+  color = 'default', show = false, mode = 'up', width, height
 }: I.IIcon) {
-  let moded = show ? mode : 'up'
   return (
     <S.Svg
       viewBox="0 0 58 40"
       xmlns="http://www.w3.org/2000/svg"
       color={color}
-      mode={moded}
+      mode={mode}
       show={show}
       width={width}
       height={height}

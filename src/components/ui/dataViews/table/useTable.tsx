@@ -1,43 +1,66 @@
-
-import { useEffect, useState } from 'react'
+'use client'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import * as I from './interfaces'
 
+const transformSizesofColumns = ({min, max}: I.IsizeOfColumn) => ` minmax(${min}, ${max ? max : '1fr' }) `
 
-const useTable = ({
-  columnsConfig,
-  sizesOfColumns,
-  hiddenColumns,
-}: I.IuseTable) => {
 
-  const [columns, setColumns] = useState(columnsConfig)
-  const [sizes, setSizes] = useState<I.ISize[] | undefined>(sizesOfColumns)
+
+export default function useTable ({
+  configColumns
+}: I.IuseTable) {
+  const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
+
+  const hiddensDefaults = configColumns.filter(col => col.hideByDefault && col.idKey !== undefined)
+  const columns = configColumns.filter(col => !col.hideByDefault && col.idKey !== undefined)
+
+  const [hiddens, setHiddens] = useState(hiddensDefaults)
+  const [columnsToShow, setColumnsToShow] = useState(columns)
   const [sizeString, setSizeString] = useState<string>()
-  const [hiddens, setHiddens] = useState<string[] | undefined>(hiddenColumns)
-  useEffect(() => {console.log('columns', columns)}, [columns])
-  useEffect(() => {console.log('sizes', sizes)}, [sizes])
-  useEffect(() => {console.log('hiddens', hiddens)}, [hiddens])
+  
+  useEffect(() => {
+    let raw = columnsToShow.sort((a, b) => a.order - b.order)
+    setColumnsToShow(raw)
+  }, [columnsToShow])
 
-  const updateColumns = (hides: string[]) => {
-    let raw: I.IColumnConfigItem[] = []
-    columns.map((col1, i) => {
-      if(!hides?.includes(col1.keyColumn)) {
-        raw.push(col1)
+  useIsomorphicLayoutEffect(() => {
+    let rawSizes: any[] = []
+    let stringRaw: string = ''
+    columnsToShow.map((col) => {
+      if (col.sizeOfColumn) {
+
+        rawSizes.push({
+          str: transformSizesofColumns(col.sizeOfColumn),
+          order: col.order
+        })
+      } else {
+        rawSizes.push({
+          str: transformSizesofColumns({min: '1fr', max: '1fr'}),
+          order: col.order
+        })
       }
+
     })
-    setColumns(raw)
+    rawSizes = rawSizes.sort((a, b) => a.order - b.order)
+    rawSizes.map((size) => { stringRaw += size.str })
+    setSizeString(stringRaw)
+  }, [hiddens, columnsToShow])
+
+  const showOrHideColumn = (col: I.ICollunnsConfig) => {
+    let rawHiddens: I.ICollunnsConfig[] = []
+    let rawShow: I.ICollunnsConfig[] = []
+    if(!hiddens.includes(col)) {
+      rawHiddens = [...hiddens, col]
+      rawShow = columnsToShow.filter(col2 => { if(col.idKey !== col2.idKey) return col2} )
+    } else if(!columnsToShow.includes(col)) {
+      rawShow = [...columnsToShow, col]
+      rawHiddens = hiddens.filter(col2 => { if(col.idKey !== col2.idKey) return col2} )
+    }
+    setHiddens(rawHiddens)
+    setColumnsToShow(rawShow)
   }
 
-  const updateSizeOfColumns = () => {
-    let raw: I.ISize[] = []
-    sizes?.map((size, i) => {
-      if(!hiddens?.includes(size.idKey)) {
-        raw.push(size)
-      }
-    })
-    setSizes(raw)
-  }
 
-  return { columns, sizes, updateColumns, updateSizeOfColumns }
+  
+  return {hiddens, columnsToShow, showOrHideColumn, sizeString}
 }
-
-export default useTable

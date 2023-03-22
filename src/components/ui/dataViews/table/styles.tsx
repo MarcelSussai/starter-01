@@ -1,50 +1,70 @@
-import styled, { css } from 'styled-components'
+'use client'
+import styled from 'styled-components'
 import * as I from './interfaces'
-import { inconsolata } from '@/theme/fonts'
+import * as SN from '@/theme/snippetsCss'
 
-const displayCenter = css `
+
+
+export const All = styled.section<I.IAllStyle>`
+  --radius-12: 12px;
+  --radius-16: 16px;
+  ${ ({colorString}) => colorString }
+
+  ${SN.animationConfig}
+  background: var(--color2-025-CE);
+  position: relative;
+  width: 100%;
+  border: solid 1px var(--color1-200);
+  border-radius: var(--radius-16);
+`
+
+export const ContainertableOptions = styled.div`
+  ${SN.animationConfig}
+  position: absolute;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: fit-content;
+  gap: 8px;
+  /* padding: 8px; */
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+`
+
+export const ContainerIconOption = styled.button`
+  ${SN.animationConfig}
+  width: 40px;
+  height: 40px;
+  background: var(--color1-075);
+  border: solid 1px var(--color1-200);
+  display: flex;
+  border-radius: 32px;
   justify-content: center;
   align-items: center;
-`
-
-export const ContainerAbsoluteAll = styled.div<I.IContainerAll>`
---color-025-80: ${({theme, color}: any) => theme.colors[color].c025}80;
---color-025:    ${({theme, color}: any) => theme.colors[color].c025};
---color-075-80: ${({theme, color}: any) => theme.colors[color].c075}80;
---color-100-B0: ${({theme, color}: any) => theme.colors[color].c100}B0;
---color-125-64: ${({theme, color}: any) => theme.colors[color].c125}64;
---color-150:    ${({theme, color}: any) => theme.colors[color].c150}BE;
---color-150-B0: ${({theme, color}: any) => theme.colors[color].c150}B0;
---color-200-AA: ${({theme, color}: any) => theme.colors[color].c200}AA;
---color-300:    ${({theme, color}: any) => theme.colors[color].c300};
---color-600:    ${({theme, color}: any) => theme.colors[color].c600};
---color-750:    ${({theme, color}: any) => theme.colors[color].c750};
---color-800:    ${({theme, color}: any) => theme.colors[color].c800};
---color-900:    ${({theme, color}: any) => theme.colors[color].c900};
---color-main-600:   ${({theme}) => theme.colors.main.c050 };
---color-second-600: ${({theme}) => theme.colors.second.c050 };
---table-radius: 16px;
---table-radius-minus: 12px;
   position: relative;
-  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+  
+  &:hover { background: var(--color1-200); }
 `
 
-export const ContainerAll = styled.div<I.IContainerAll>`
-  overflow: auto;
-  width: 100%;
-  position: relative;
-  color: var(--color-750);
-  scrollbar-color: var(--color-800) var(--color-200-AA);
-  border: solid 1px var(--color-150);
-  border-radius: var(--table-radius);
-  &::-webkit-scrollbar { width: 10px; height: 10px; }
-  &::-webkit-scrollbar-button { display: none; }
-  &::-webkit-scrollbar-track-piece { background: transparent; }
-  &::-webkit-scrollbar-thumb { background: var(--color-750); border-radius: 10px; }
+export const ConatinerColumnsToShow = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  top: 44px;
+  /* border: solid 1px var(--color1-300); */
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--color1-150);
 `
 
-export const ContainerAllTable = styled.div`
+export const ContainerAll = styled.div`
+  ${SN.animationConfig}
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -54,108 +74,104 @@ export const ContainerAllTable = styled.div`
   width: 100%;
 `
 
-export const ContainerOptions = styled.div`
-  position: absolute;
-  padding: 8px;
-  right: 0px;
-  top: 0px;
-  height: fit-content;
-  max-width: 316px;
-  background: var(--color-025);
-  z-index: 2;
+export const ContainerAllScroll = styled.div`
+  ${SN.animationConfig}
+  width: 100%;
+  border: solid 8px var(--color1-025);
+  border-radius: var(--radius-16);
+  overflow: auto;
+  position: relative;
+  scrollbar-color: var(--color1-800) var(--color1-025);
+  &::-webkit-scrollbar { width: 10px; height: 10px; }
+  &::-webkit-scrollbar-button { display: none; }
+  &::-webkit-scrollbar-track-piece { background: var(--color1-025); }
+  &::-webkit-scrollbar-thumb { background: var(--color1-800); border-radius: 10px; }
 `
 
-export const ContainerOftoShowColumns = styled.div`
+export const ContainerAllTable = styled.div`
+  ${SN.animationConfig}
+  display: grid;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  width: 100%;
+  position: relative;
 `
 
-export const ContainerItemShowColumn = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  padding: 8px;
+export const ContainerTableGridTitle = styled.div<I.IGridTable>`
+  ${SN.animationConfig}
+  display: grid;
+  position: relative;
+  grid-template-columns: ${ ({sizesString}) => sizesString };
+  width: 100%;
+`
+
+export const ContainerTableGridFooter = styled.div<I.IGridTable>`
+  ${SN.animationConfig}
+  display: grid;
+  position: relative;
+  grid-template-columns: ${ ({sizesString}) => sizesString };
+  width: 100%;
+`
+
+export const ContainerTableHeader = styled.div<I.IGridTable>`
+  ${SN.animationConfig}
+  display: grid;
+  position: relative;
+  grid-template-columns: ${ ({sizesString}) => sizesString };
+  width: 100%;
+  background: var(--color1-125);
+`
+
+export const ContainerTableRow = styled.div<I.IGridTable>`
+  ${SN.animationConfig}
+  display: grid;
+  grid-template-columns: ${ ({sizesString}) => sizesString };
+	/* grid-column: 1 / -1; */
+  position: relative;
+  width: 100%;
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  background: ${ ({alternate}) => alternate ? 'var(--color1-075)' : 'var(--color1-050)' };
+  ${ ({isLast, isFirst}) => isLast ? `
+  ` : isFirst ? `
+    border-top: 1px solid var(--color1-500);
+    border-bottom: 1px solid var(--color1-150);
+  ` : `
+    border-bottom: 1px solid var(--color1-150);
+  ` }
+
   &:hover {
-    background: #0FF;
+    background: var(--color1-200);
   }
 `
 
-export const ContainerTableTitleHeader = styled.div`
-  color: var(--color-800);
-  background: linear-gradient(45deg, var(--color-main-600), var(--color-second-600));
+export const ContainerTableTitle = styled.div`
+  ${SN.animationConfig}
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: relative;
   align-items: center;
 	grid-column: 1 / -1;
+  width: 100%;
+  height: 64px;
   gap: 8px;
-  padding: 16px;
-  border-bottom: solid 1px var(--color-300);
-  border-top-left-radius: var(--table-radius-minus);
-  border-top-right-radius: var(--table-radius-minus);
-  line-height: 1;
-  font-size: 2.4rem;
-  letter-spacing: .1rem;
-  font-weight: 400;
+  padding: 0 16px;
+  background: linear-gradient(45deg, var(--color2-100), var(--color3-100));
+  border-bottom: solid 1px var(--color1-500);
+  border-top-left-radius: var(--radius-12);
+  border-top-right-radius: var(--radius-12);
 `
 
-export const ContainerTable = styled.div<I.IGridValues>`
-  width: 100%;
-  display: grid;
-  position: relative;
-  border: solid 8px var(--color-025-80);
-  border-radius: var(--table-radius);
-  ${({qtdColumns}) => typeof qtdColumns !== 'number' ?
-    `grid-template-columns: 40px 40px ${qtdColumns};` :
-    `grid-template-columns: 40px 40px repeat(${qtdColumns}, 1fr );`
-  }
-  gap: 0;
+export const ContainerGridTable = styled.div`
+  ${SN.animationConfig}
 `
 
-export const ContainerTableRow = styled.div<I.IGridValues>`
-  width: 100%;
-	grid-column: 1 / -1;
-  display: grid;
-  ${({qtdColumns}) => typeof qtdColumns !== 'number' ?
-    `grid-template-columns: 40px 40px ${qtdColumns};` :
-    `grid-template-columns: 40px 40px repeat(${qtdColumns}, 1fr );`
-  }
-  gap: 0;
-  transition: all .2s ease-in-out;
-  border-left: solid 0px transparent;
-  z-index: 0;
-  position: relative;
-  cursor: pointer;
-  &::before {
-    content: '';
-    width: 0px;
-    height: 100%;
-    background: var(--color-150-B0);
-    left: 0;
-    top: 0;
-    position: absolute;
-    transition: all .3s ease-in-out;
-  }
-  &:hover {
-    /* border-left: solid 4px var(--color-150); */
-    background: var(--color-100-B0);
-    &::before {
-      content: '';
-      width: 8px;
-      height: 100%;
-      background: var(--color-150-B0);
-      left: 0;
-      top: 0;
-      position: absolute;
-    }
-  }
+export const ContainerGridTableRow = styled.div`
+  ${SN.animationConfig}
 `
 
-export const CellHeader = styled.div<I.ICell>`
-  transition: all .2s ease-in-out;
+export const CellHeader = styled.div<I.ICellHeader>`
+  ${SN.animationConfig}
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -163,24 +179,18 @@ export const CellHeader = styled.div<I.ICell>`
   align-items: center;
   gap: 2px;
   position: relative;
-  z-index: 0;
-  padding: 0px 0px 0px 0px;
-  width: ${ ({size}) => size ? size : '100%' };
+  width: 100%;
   height: 100%;
-  color: var(--color-600);
-  background: var(--color-075-80);
-  border-bottom: solid 1px var(--color-300);
+  padding: 8px;
   cursor: pointer;
   user-select: none;
-
   &::before {
     content: '';
     position: absolute;
     left: 0;
     width: 1px;
     height: 48%;
-    background: var(--color-150);
-    opacity: ${ ({isFirst}) => isFirst ? '0' : '1' };
+    background: var(--color1-200);
   }
   &::after {
     content: '';
@@ -188,116 +198,122 @@ export const CellHeader = styled.div<I.ICell>`
     right: 0;
     width: 1px;
     height: 48%;
-    background: var(--color-150);
-    opacity: ${ ({isLast}) => isLast ? '0' : '1' };
+    background: var(--color1-200);
+    opacity: ${({isLast}) => isLast ? '0' : '1'};
   }
+  &:hover {
+    background: var(--color1-200);
 
-  &:hover { background: var(--color-100-B0); }
+  }
 `
 
 export const CellHeaderDetail = styled.div`
+  ${SN.animationConfig}
+  max-width: 32px;
+  height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: fit-content;
-  right: 8px;
-  position: absolute;
 `
 
 export const CellHeaderText = styled.div`
+  ${SN.animationConfig}
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 32px 4px 8px;
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1;
-  white-space: nowrap;
+  color: var(--color1-800);
 `
 
-export const CellRows = styled.div<I.ICell>`
+export const CellRow = styled.div<I.ICellRow>`
+  ${SN.animationConfig}
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   align-items: center;
-  width: ${ ({size}) => size ? size : '100%' };
-  height: 100%;
-  width: 100%;
+  gap: 2px;
   white-space: nowrap;
-  padding: 8px 32px 4px 8px;
-  position: relative;
-  background: ${ ({alternate}) => alternate ? 'var(--color-075-80)' : 'transparent' };
-
+  width: 100%;
+  height: 100%;
+  min-height: 48px;
+  line-height: 1;
+  padding: 8px;
   &::before {
     content: '';
     position: absolute;
     left: 0;
     width: 1px;
-    height: 48%;
-    background: var(--color-125-64);
-    opacity: ${ ({isFirst}) => isFirst ? '0' : '1' };
+    height: 32%;
+    background: var(--color1-200);
+    opacity: ${({isFirst}) => isFirst ? '0' : '1'};
   }
   &::after {
     content: '';
     position: absolute;
     right: 0;
     width: 1px;
-    height: 48%;
-    background: var(--color-125-64);
-    opacity: ${ ({isLast}) => isLast ? '0' : '1' };
+    height: 32%;
+    background: var(--color1-200);
+    opacity: ${({isLast}) => isLast ? '0' : '1'};
   }
 `
 
-export const CellSelectHeader = styled.div<I.ICellSelectHeader>`
-  ${displayCenter}
-  ${ ({noBorder}) => noBorder ? `
-  ` : `
-    border-bottom: solid 1px var(--color-300);
-    border-right: solid 1px var(--color-300);
-  ` }
-  background: var(--color-075-80);
+export const CellSelectionHeader = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--color1-075);
+`
+
+export const CellSelection = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--color1-050);
+  border-right: solid 1px var(--color1-150);
+`
+
+export const CellOption = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--color1-050);
+  border-right: solid 1px var(--color1-150);
+`
+
+export const CellOptionHeader = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--color1-075);
+  border-right: solid 1px var(--color1-150);
+`
+
+export const ContainerAllFooterTable = styled.div`
+  ${SN.animationConfig}
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   position: relative;
-  z-index: 1;
-  min-width: 24px;
-  min-height: 24px;
-  
-
-  &::after {
-    content: '${ ({qtd}) => qtd }';
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: -10px;
-    right: -10px;
-    padding: 3px 3px;
-    background: var(--color-750);
-    color: var(--color-025);
-    opacity: ${ ({qtd}) => qtd && qtd > 0 ? '1' : '0'};
-    user-select: none;
-    font-weight: 600;
-    width: fit-content;
-    height: fit-content;
-    min-width: 18px;
-    font-size: 1.2rem;
-    line-height: 1;
-    border-radius: 12px;
-    font-family: ${inconsolata.style.fontFamily};
-    transition: all .2s ease-in-out;
-  }
-`
-
-export const CellSelect = styled.div<I.ICell>`
-  ${displayCenter}
-  min-width: 24px;
-  min-height: 24px;
-  overflow: hidden;
-  ${ ({noBorder, isLast}) => noBorder ? '' : `
-    border-right: solid 1px var(--color-300);
-    border-bottom: solid 1px ${ isLast ? 'transparent' : 'var(--color-150)' };
-  ` }
-  /* ${ ({isLast}) => isLast ? 'border-bottom-left-radius: var(--table-radius-minus);' : '' } */
-  background: var(--color-075-80);
+  align-items: center;
+  grid-column: 1 / -1;
+  width: 100%;
+  gap: 8px;
+  min-height: 48px;
+  border-radius: 0 0 8px 8px;
+  border-top: 1px solid var(--color1-500);
+  background: linear-gradient(45deg, var(--color2-100), var(--color3-100));
+  /* border-top: solid 1px var(--color1-300); */
 `
